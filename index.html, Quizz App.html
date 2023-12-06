@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        
+        #quiz-container {
+            max-width: 600px;
+            margin: auto;
+        }
+        
+        .question {
+            margin-bottom: 20px;
+        }
+        
+        #results {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="quiz-container">
+        <div id="quiz" class="question">
+            <h2>Question 1: What is the capital of France?</h2>
+            <input type="radio" name="q1" value="Paris"> Paris<br>
+            <input type="radio" name="q1" value="Berlin"> Berlin<br>
+            <input type="radio" name="q1" value="Madrid"> Madrid<br>
+        </div>
+
+        <div id="quiz" class="question">
+            <h2>Question 2: What is the largest planet in our solar system?</h2>
+            <input type="radio" name="q2" value="Earth"> Earth<br>
+            <input type="radio" name="q2" value="Jupiter"> Jupiter<br>
+            <input type="radio" name="q2" value="Mars"> Mars<br>
+        </div>
+
+        <div id="quiz" class="question">
+            <h2>Question 3: Who wrote 'Romeo and Juliet'?</h2>
+            <input type="radio" name="q3" value="William Shakespeare"> William Shakespeare<br>
+            <input type="radio" name="q3" value="Charles Dickens"> Charles Dickens<br>
+            <input type="radio" name="q3" value="Jane Austen"> Jane Austen<br>
+        </div>
+
+        <button onclick="submitQuiz()">Submit Quiz</button>
+
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            const answers = {
+                q1: document.querySelector('input[name="q1"]:checked').value,
+                q2: document.querySelector('input[name="q2"]:checked').value,
+                q3: document.querySelector('input[name="q3"]:checked').value
+            };
+
+            let score = 0;
+
+            if (answers.q1 === "Paris") {
+                score++;
+            }
+
+            if (answers.q2 === "Jupiter") {
+                score++;
+            }
+
+            if (answers.q3 === "William Shakespeare") {
+                score++;
+            }
+
+            displayResults(score);
+        }
+
+        function displayResults(score) {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = `Your score: ${score}/3`;
+        }
+    </script>
+
+</body>
+
+</html>
